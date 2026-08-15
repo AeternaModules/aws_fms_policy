@@ -20,7 +20,7 @@ output "fms_policies_description" {
 }
 output "fms_policies_exclude_map" {
   description = "Map of exclude_map values across all fms_policies, keyed the same as var.fms_policies"
-  value       = { for k, v in aws_fms_policy.fms_policies : k => v.exclude_map if v.exclude_map != null && length(v.exclude_map) > 0 }
+  value       = { for k, v in aws_fms_policy.fms_policies : k => one(v.exclude_map) if v.exclude_map != null && length(v.exclude_map) > 0 }
 }
 output "fms_policies_exclude_resource_tags" {
   description = "Map of exclude_resource_tags values across all fms_policies, keyed the same as var.fms_policies"
@@ -28,7 +28,7 @@ output "fms_policies_exclude_resource_tags" {
 }
 output "fms_policies_include_map" {
   description = "Map of include_map values across all fms_policies, keyed the same as var.fms_policies"
-  value       = { for k, v in aws_fms_policy.fms_policies : k => v.include_map if v.include_map != null && length(v.include_map) > 0 }
+  value       = { for k, v in aws_fms_policy.fms_policies : k => one(v.include_map) if v.include_map != null && length(v.include_map) > 0 }
 }
 output "fms_policies_name" {
   description = "Map of name values across all fms_policies, keyed the same as var.fms_policies"
@@ -68,7 +68,7 @@ output "fms_policies_resource_type_list" {
 }
 output "fms_policies_security_service_policy_data" {
   description = "Map of security_service_policy_data values across all fms_policies, keyed the same as var.fms_policies"
-  value       = { for k, v in aws_fms_policy.fms_policies : k => v.security_service_policy_data if v.security_service_policy_data != null && length(v.security_service_policy_data) > 0 }
+  value       = { for k, v in aws_fms_policy.fms_policies : k => one(v.security_service_policy_data) if v.security_service_policy_data != null && length(v.security_service_policy_data) > 0 }
 }
 output "fms_policies_tags" {
   description = "Map of tags values across all fms_policies, keyed the same as var.fms_policies"
